@@ -7,6 +7,12 @@ include('includes/connection.php');
 
 // $conn = mysqli_connect($host, $username, $password, $dbname);
 
+if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true){
+    header("Location: /");
+    exit();
+}
+
+
 $error = "";
 if(isset($_POST['attempt_login'])){
   $email = $_POST['email'];
@@ -57,7 +63,7 @@ if(isset($_POST['attempt_login'])){
 
     <!-- Custom fonts for this template-->
     <link
-      href="assets/vendor/fontawesome-free/css/all.min.css"
+      href="/assets/vendor/fontawesome-free/css/all.min.css"
       rel="stylesheet"
       type="text/css"
     />

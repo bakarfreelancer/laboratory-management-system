@@ -74,6 +74,7 @@ CREATE TABLE `tests` (
   `test_id` int(11) NOT NULL AUTO_INCREMENT,
   `test_name` varchar(50) NOT NULL,
   `price` int(11) NOT NULL,
+  `deleted` boolean NOT NULL DEFAULT FALSE,
   PRIMARY KEY(`test_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
