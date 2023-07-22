@@ -6,6 +6,7 @@ include('../includes/topbar.php');
 $success="";
 $error="";
 if(isset($_GET['test_delete'])){
+    check_role($_SESSION['role']);
     // delete user query
     $test_id = $_GET['test_delete'];
     $query = "UPDATE tests SET deleted = '1' WHERE test_id = '$test_id'";
@@ -55,7 +56,9 @@ $result = mysqli_query($conn, $query);
                     <th scope="col">ID</th>
                     <th scope="col">Name</th>
                     <th scope="col">Price</th>
+                    <?php if($_SESSION['role'] === 'admin'):?>
                     <th scope="col">Actions</th>
+                    <?php endif ?>
                 </tr>
                 </thead>
                 <tbody>
@@ -67,6 +70,7 @@ $result = mysqli_query($conn, $query);
                             <td><?php echo $test['test_id']; ?></td>
                             <td><?php echo $test['test_name']; ?></td>
                             <td><?php echo $test['price']; ?></td>
+                            <?php if($_SESSION['role'] === 'admin'):?>
                             <td>
                                 <!-- edit and delete icon -->
                                 <a href="/tests/edit.php?test_id=<?php echo $test['test_id']; ?>" class="">
@@ -81,6 +85,7 @@ $result = mysqli_query($conn, $query);
                                     <i class="fas fa-trash text-danger fa-lg"></i>
                                 </a>
                             </td>
+                            <?php endif; ?>
                         </tr>
                     <?php
                     endwhile;

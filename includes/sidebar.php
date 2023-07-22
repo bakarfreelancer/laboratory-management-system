@@ -46,6 +46,7 @@
                     <span>Tests</span></a>
             </li>
 
+            <?php if($_SESSION['role'] === 'admin'):?>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
@@ -54,7 +55,7 @@
                     <i class="fas fa-user"></i>
                     <span>Users</span></a>
             </li>
-
+            <?php endif; ?>
             <hr class="sidebar-divider">
             
                 <!-- Sidebar Toggler (Sidebar) -->

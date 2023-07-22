@@ -2,7 +2,7 @@
 include('../includes/header.php');
 include('../includes/sidebar.php');
 include('../includes/topbar.php');
-
+check_role($_SESSION['role']);
 $error = "";
 
 if(isset($_POST['add_user'])){

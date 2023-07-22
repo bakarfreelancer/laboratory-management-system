@@ -6,6 +6,7 @@ include('../includes/topbar.php');
 $success="";
 $error="";
 if(isset($_GET['doctor_delete'])){
+    check_role($_SESSION['role']);
     // delete user query
     $doctor_id = $_GET['doctor_delete'];
     $query = "DELETE FROM doctors WHERE doctor_id = $doctor_id";
@@ -54,7 +55,9 @@ $result = mysqli_query($conn, $query);
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Name</th>
+                    <?php if($_SESSION['role'] === 'admin'):?>
                     <th scope="col">Actions</th>
+                    <?php endif;?>
                 </tr>
                 </thead>
                 <tbody>
@@ -65,6 +68,7 @@ $result = mysqli_query($conn, $query);
                         <tr>
                             <td><?php echo $doctor['doctor_id']; ?></td>
                             <td><?php echo $doctor['doctor_name']; ?></td>
+                            <?php if($_SESSION['role'] === 'admin'):?>
                             <td>
                                 <!-- edit and delete icon -->
                                 <a href="/doctors/edit.php?doctor_id=<?php echo $doctor['doctor_id']; ?>" class="">
@@ -79,6 +83,7 @@ $result = mysqli_query($conn, $query);
                                     <i class="fas fa-trash text-danger fa-lg"></i>
                                 </a>
                             </td>
+                            <?php endif;?>
                         </tr>
                     <?php
                     endwhile;

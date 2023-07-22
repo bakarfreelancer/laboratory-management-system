@@ -2,6 +2,7 @@
 include('../includes/header.php');
 include('../includes/sidebar.php');
 include('../includes/topbar.php');
+check_role($_SESSION['role']);
 if(!$_GET['test_id']){
     header('location: /tests');
     exit();
