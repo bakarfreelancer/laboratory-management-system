@@ -2,6 +2,7 @@
 include('../includes/header.php');
 include('../includes/sidebar.php');
 include('../includes/topbar.php');
+include('../includes/helper.php');
 
 if (!isset($_GET['id']) || empty($_GET['id'])) {
     header('location: /patients');
@@ -52,7 +53,22 @@ while ($row = mysqli_fetch_assoc($result)) {
         <div class="row g-4">
             <div class="col-12 col-md-6">
                 <div class="card p-3">
-                    <h3 class="card-title">Personal Info</h3>
+                    <div class="d-flex justify-content-between">
+                        <h3 class="card-title">Personal Info</h3>
+                        <form action="/patients/print.php" method="POST">
+                            <input type="hidden" name="p_name" value="<?php echo $patient['name']?>">
+                            <input type="hidden" name="gender" value="<?php echo $patient['gender']?>">
+                            <input type="hidden" name="age" value="<?php echo $patient['age']?>">
+                            <input type="hidden" name="contact" value="<?php echo $patient['contact']?>">
+                            <input type="hidden" name="address" value="<?php echo $patient['address']?>">
+                            <input type="hidden" name="time" value="<?php echo dateFormat( $patient['created_at'])?>">
+                            <input type="hidden" name="doctor" value="<?php echo $patient['doctor_name']?>">
+                            <input type="hidden" name="total" value="<?php echo $patient['total']?>">
+                            <input type="hidden" name="discount" value="<?php echo $patient['discount']?>">
+                            <input type="hidden" name="tests" value="<?php echo htmlspecialchars(json_encode($tests_records)); ?>">
+                            <button type="submit" name="print" class="btn btn-success"><i class="fas fa-print"></i></button>
+                        </form>
+                    </div>
                     <hr>
                     <h3>Name: <b><?php echo $patient['name']?></b></h3>
                     <h5>Gender: <b><?php echo $patient['gender']?></b></h5>
@@ -66,7 +82,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                 <div class="card p-3">
                     <h3 class="card-title">Lab Info</h3>
                     <hr>
-                    <h5>Time: <b><?php echo $patient['created_at']?></b></h5>
+                    <h5>Time: <b><?php echo dateFormat($patient['created_at'])?></b></h5>
                     <h5>Doctor: <b><?php echo $patient['doctor_name']?></b></h5>
                     <h5>Sub total : <b><?php echo $patient['total']?></b></h5>
                     <h5>Discount: <b><?php echo $patient['discount']?></b></h5>

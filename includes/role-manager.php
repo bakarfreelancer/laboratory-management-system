@@ -5,4 +5,3 @@ function check_role($role){
         header('location: /');
     }
 }
-?>

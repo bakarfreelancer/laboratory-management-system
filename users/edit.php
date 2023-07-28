@@ -112,7 +112,7 @@ if(isset($_POST['update_user'])){
                         <button type="submit" name="update_user" class="btn btn-primary w-100">Update User</button>
                     </div>
                 </div>
-                </form>
+            </form>
         </div>
     </div>
 
