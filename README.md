@@ -2,10 +2,12 @@
 
 Laboratory Management System Project in PHP for learning.
 
+Watch the complete course on [YouTube Dot Code](https://www.youtube.com/playlist?list=PL45u2-07wFlKk6pgCtfLNVSFzxrEEQexk)
+
 Bootstrap Theme Download Link [Click Here](https://startbootstrap.com/theme/sb-admin-2)
 
-To run this code on your xampp server, follow the custom domain name instructions.
+Follow the custom domain name instructions to run this code on your Xampp server.
 
-Import the sql file to database named `lab`. Location of sql file is `db/lab.sql`
+Import the SQL file to a database named `lab`. The location of SQL file is `db/lab.sql`
 
-Also change the database password in `includes/connection.php`
+Also, change the database password in `includes/connection.php`
